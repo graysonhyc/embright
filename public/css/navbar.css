@@ -1,0 +1,65 @@
+/* CSS - Navigation Bar */
+.btn{
+    background-color:#64c2ec;
+    color:#fff;
+}
+.btn:hover{
+    background-color:#BAE1F2;
+    color:#fff;
+}
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin:0 auto;
+    margin: 0;
+    padding: 0;
+    list-style-type:none;
+    display: inline;
+}
+.navbar-toggle {
+    z-index:3;
+}
+.user-name {
+    padding:22px 3px 0 3px;
+}
+.user-name > p{
+    font-size:15px;
+    font-weight:bold;
+    padding:0 0 0 0;
+}
+.user-name a{
+    color:#000;
+    text-decoration: none;
+}
+.user-name a:hover{
+    color:#000;
+}
+.user-name:hover{
+    background-color:#f0f0f0;
+}
+.image-propic {
+    padding-top:4px;
+}
+.nav-pages {
+    padding:20px 15px 0 15px;
+    background-color:#ffffff;
+}
+.nav-pages p > a{
+    color:#000000;
+}
+.nav-pages:hover{
+    background-color:#ffffff;
+}
+.nav-pages:hover p >a {
+    font-weight:bold;
+    padding:0 0 0 0;
+}
+.nav-pages a {
+    font-weight:400;
+    padding:0 0 0 0;
+    text-transform: none;
+    text-decoration:none;
+}

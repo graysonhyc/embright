@@ -1,0 +1,25 @@
+.container-bot{
+    padding:0 0 0 0;
+    height:100%;
+    z-index:1;
+}
+.container-image{
+    background-color:#dc3055;
+    height:15%;
+    text-align: center;
+    position:relative;
+    z-index: 1;
+}
+.image-AI-logo{
+    width:100px;
+    height:100px;
+}
+.image-helper{
+    padding-top: calc(3.5vh);
+}
+.bot-iframe{
+  height:85%;
+  width:100%;
+  position:absolute;
+  box-shadow: 1px 1px 5px #969696;
+}

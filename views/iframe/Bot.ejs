@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Embright-AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+    <link href="../css/botchat.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="BotChatElement"></div>
+    <script src="../js/botchat.js"></script>
+    <script>
+var model = {
+  "userId": "<%= localuser[0].UserID %>",
+  "userName": "<%= localuser[0].DisplayName %>",
+  "botId": "embright_bot_handle",
+  "botIconUrl": "//bot-framework.azureedge.net/bot-icons-v1/bot-framework-default-9.png",
+  "botName": "Embright-AI",
+  "secret": "2vKkVoQlPOg.cwA.nRc.x2Phm0_QVj9Gs992t3s1bQGmxMexcJUt_If_aa098DE",
+  "iconUrl": "//bot-framework.azureedge.net/bot-icons-v1/bot-framework-default-9.png",
+  "directLineUrl": "https://webchat.botframework.com/v3/directline",
+  "webSocketEnabled": "false"
+};
+    </script>
+    <script>
+        BotChat.App({
+            directLine: {
+                secret: model.secret,
+                token: model.token,
+                domain: model.directLineUrl,
+                webSocket: false
+            },
+            user: { id: model.userId, name: model.userName },
+            bot: { id: model.botId, name: model.botName },
+            resize: 'window'
+        }, document.getElementById("BotChatElement"));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Embright - Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap-native.css" rel="stylesheet">
+    <link href="css/botchat_leftbar.css" rel="stylesheet">
+
+    <link rel="icon" href="img/favicon.png">
+
+    <!-- Custom CSS -->
+    <link href="css/navbar.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+
+    <!-- Theme CSS -->
+    <link href="css/creative.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+/* General CSS */
+html,body,.container {height:100%;}
+.no-padding {padding:0 0 0 0;}
+.test-unit *, .single-test {border:1px solid red;}
+/* End of General CSS */
+
+
+/* CSS - Form Elements */
+.form {
+    padding:30px 30px 30px 30px;
+}
+.file{
+    padding:5px 5px;
+}
+.topic {
+    text-align:center;
+    padding-top:20px;
+}
+.topic > h3 {
+    font-weight: 100;
+}
+hr {
+  border-color: #5970b3;
+  border-width: 2px;
+  max-width: 500px;
+}
+/* End of CSS of Form Element */
+/* CSS - Containers */
+.container {
+    width:100%;
+}
+.container-card {
+    background-color:#fff;
+    margin:30px 30px 0 30px;
+    border-radius:10px;
+    box-shadow: 1px 1px 5px #888888;
+    height:90%;
+    padding:0 40px 40px 40px;
+}
+.container-content{
+    position:relative;
+    margin:0 0 0 0;
+    padding:0 0 0 0;
+    height:calc(100% - 62px);
+}
+.container-form{
+    height:100%;
+}
+.container-form>form{
+    padding:10px 20px 0 20px;
+    overflow-y:auto; 
+    height:100%
+}
+/* End of CSS of Containers */
+
+/* CSS - Bootstrap Modifier */
+.navbar {
+    margin:0 0 0 0;
+    border-radius:0px;
+}
+.
+.container {
+    display:table;
+    width: 100%;
+    margin-top: -50px;
+    padding: 50px 0 0 0; /*set left/right padding according to needs*/
+    box-sizing: border-box;
+}
+.col-md-9{
+    padding:0 0 0 0;
+}
+
+
+</style>
+</head>
+
+<body>
+<!--Navigation Bar-->
+<nav class="navbar navbar-default" role="navigation" style="border:none">
+  <div class="navbar-collapse collapse">
+    <div class="nav navbar-nav">
+        <img src="img/embrighter_logo.png" style="height:45px; padding-top:15px;">
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-pages"><p><a href="/">Main Page</a></p></li>
+        <li class="nav-pages"><p><a href="/show_directory">Project Directory</a></p></li>
+        <li class="nav-pages"><p><a href="/createplan">Create Project</a></p></li>
+        <li class="nav-pages"><p><a href="/profile">Profile</a></p></li>
+
+        <li class="image-propic"><a class="page-scroll"><img src="img/pro_pic.png" height="30px"></a></li>
+        <li class="user-name">
+            <p><a href="profile"><%=locals.localuser[0].DisplayName%></a></p>
+        </li>
+        <li><a class="page-scroll" href="/logout" style="padding-right:20px;padding-top:15px"><button type="button" class="btn">Sign Out</button></a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container container-content">
+    <!-- Bot -->
+    <div class="col-md-3 container-bot">
+        <div class="container-image">
+            <div class="image-helper"><img class="image-AI-logo" src="img/AI.gif"></div>
+        </div>
+       <iframe src="iframe/bot" class="bot-iframe" scrolling="" frameborder="0"></iframe>
+    </div>
+    <!--End of "Bot"-->
+
+    <!-- Add Learning Plan -->
+    <div class="col-md-9" style="height:100%"> 
+        <iframe src="iframe/garageplans" width="100%" frameborder=0 style="height:calc(100% - 5px)"></iframe>
+    </div>
+    <!--End of "Add Learning Plan" -->
+</div>
+
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!-- latest jQuery direct from google's CDN -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+ 
+    <!--instantiate after some browser sniffing to rule out webkit browsers-->
+</body>
+
+</html>
+ 

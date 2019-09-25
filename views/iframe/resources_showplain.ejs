@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Logs</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap-native.css" rel="stylesheet">
+    <!-- Plugin CSS -->
+
+    <!-- Theme CSS -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+body{
+  background-color:#f5f5f5;
+  height:100%;
+}
+hr {
+  border-color: #a1a1a1;
+  border-width: 2px;
+  margin:-5px 0 0 0;
+}
+
+.row {
+    margin:0 0 0 0;
+}
+/* CSS - Title Plan */
+.title-plan{
+  background-image:url('<%=plans[0].PlanBackground%>');
+  text-align:center;
+}
+.title-plan  p{
+  color:#fff;
+}
+.title-plan  .author {
+  text-align: center;
+}
+.title-plan  .title{
+  font-size:50px;
+  font-weight: bold;
+  padding:5px 10px 0 10px;
+  margin:50px 0 20px 0;
+  text-align: center;
+}
+.card {
+  margin:20px;
+  border:3px solid #f0f0f0;
+  box-shadow: 1px 1px 5px #888888;
+  border-radius:5px;
+  padding: 0 0 10px 0;
+  background-color: #eadddf;
+
+}
+.card-header{
+  background-color:#f1f1f0;
+  padding:5px 0 5px 0;
+  font-size:20px;
+  font-weight:bold;
+}
+.card-block{
+  padding:0 10px 0 10px;
+}
+.card-date{
+
+}
+.card-tagline{
+  padding-top: 5px;
+  font-style:italic;
+  font-size:13px;
+  font-family:sans-serif;
+  text-align:center;
+  width:500px;
+  margin:0 auto;
+}
+.card-title {
+  padding:5px 0 5px 0;
+}
+.container-title > *{
+  background-color: rgba(244,53,118, 0.9);
+  display:inline-block;
+}
+.container-info > * {
+  background-color: rgba(0,0,0, 0.5);
+  display:inline-block;
+  padding:3px 10px 3px 10px;
+}
+.container-info a{
+  color:white;
+}
+.container-button{
+  text-align:center;
+}
+.container-button > button {
+  color:white;
+  background-color:#4bc59c;
+}
+.container-button >button:hover,
+.container-button>button:active{
+  color:#fff;
+  background-color:#79c7ad;
+}
+.nav-link:active{
+  background-color:#d9d9d9;
+}
+.list-resources {
+    padding:0 0 0 0;
+}
+.list-resources > li{
+  list-style-type: none;
+}
+.title-return{
+  display:inline-block;
+  text-align:left; 
+  padding:0px 20px 0px 15px;
+  font-size:18px;  
+  background-color: rgba(104,197,238, 0.6);
+}
+.title-return a{
+   text-decoration: none;
+}
+.title-return:hover{
+  font-weight:bolder;
+}
+
+/* New CSS TESTING!!! */
+.container-log{
+  margin:10px 10px 10px 10px;
+  padding:15px 25px 15px 25px;
+  box-shadow: 1px 1px 5px #888888;
+
+}
+.container-log > .log-title {
+  font-size:30px;
+  color:#0f0f0f;
+}
+.container-log >.log-tagline{
+  padding:5px 0 0 0 ;
+  width:60vw;
+  overflow:auto;
+}
+.container-log >.log-date{
+  padding:5px 0 0 0;
+}
+.container-log > .log-separator{
+  color:#ed465a;
+  text-align:center;
+}
+.container-log > .log-description{
+  font-size: 14px;
+}
+.log-edit, .log-addfile{
+  color:#1882b1;
+  float:right;
+  font-size:13px;
+  text-decoration: none;
+  margin:3px 5px 0 5px;
+}
+.log-links p{
+  padding:0 0 0 0;
+  margin:0 0 0 0;
+}
+</style>
+</head>
+<%    
+function objectLength(obj) {
+      var result = 0;
+      for(var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+        // or Object.prototype.hasOwnProperty.call(obj, prop)
+          result++;
+        }
+      }
+      return result;
+} 
+var recordnum = objectLength(logs); 
+%>
+<body>
+<div class="title-plan">
+  <div class="container-title">
+    <p class="title" style="display:inline-block"><%=plans[0].PlanTitle%></p>
+  </div>
+    <div class="container-info">
+      <p class="author">Author: <i><%=plans[0].OwnerName%></i><span style="display:inline-block;width:30px"></span> Contact: <a href=""><%=plans[0].OwnerContact%></a></p>
+    </div>
+
+    <p class="title-return"><a href="/profile" target="_top" style="color:#fff">&#9666 Return</a></p>
+
+
+</div>
+
+
+
+<div class="cards-after-me">
+</div>
+
+
+
+  <!-- jQuery -->
+<script src="../js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.js"></script>
+
+<!-- Insert cards script -->
+<!--Step of using the card script:
+(i) Import cards with description, resources, and downloads from the database
+(ii) Push cards into the card[] array by following the structure of Clas "Card"
+(*The "Generate Cards with Resources from database here" part should be modify for different data importing method)
+(iii) The code will handle the rest :)
+-->
+
+<script>
+//!!Cards Initialization!!//
+var card_number = <%= recordnum %>; //Grab number of cards required here
+var card=[];
+var card_title=[];
+var card_tagline= [];
+var card_description= [];
+var card_date = [];
+var card_addfilelink = [];
+var card_editlink = [];
+var card_links = [];
+var card_links_show=[];
+function Card(title, tagline, description, date, addfilelink, editlink, links){
+  this.title=title;
+  this.tagline=tagline;
+  this.description=description;
+  this.date=date;
+  this.addfilelink = addfilelink;
+  this.editlink = editlink
+  this.links = links;
+} 
+//Generate Cards with Resources from database here//
+<% for (var prop in logs) { %>
+    card.push(new Card('<%=logs[prop].LogTitle%>', '<%=logs[prop].LogTagline%>', '<%=logs[prop].LogDetails%>', '<%=logs[prop].LogDate%>','/addlogfile?Title=<%=logs[prop].LogTitle%>','/editlog?ID=<%=logs[prop].LogID%>&OriginalTitle=<%=logs[prop].LogTitle%>&OriginalTagline=<%=logs[prop].LogTagline%>&OriginalDetails=<%=logs[prop].LogDetails%>',['<%=logs[prop].LogFile_1%>', '<%=logs[prop].LogFile_2%>', '<%=logs[prop].LogFile_3%>', '<%=logs[prop].LogFile_4%>', '<%=logs[prop].LogFile_5%>']));
+<% } %>
+
+//card.push(new Card('Hello Everyone', 'This is a tagline This is a tagline This is a tagline This is a tagline This is a tagline This is a tagline This is a tagline This is a tagline', 'Plain text emails are just that—plain text. They are the email equivalent to a letter written on a typewriter—no images, no pretty fonts, no hyperlinks. While they may not be nearly as attractive as HTML-based emails, they play a significant role in a well-rounded email marketing strategy. And, with the launch of the Apple Watch—which likely will only render text—plain text messages will play an even bigger role.', '03/03/2017','https://www.google.com', 'https://www.google.com', ['https://youtube.com', 'https://google.com']));//Push generated cards to array//
+for(i=0;i<card.length;i++){
+  card_title.push(card[i].title);
+  card_tagline.push(card[i].tagline);
+  card_description.push(card[i].description);
+  card_date.push(card[i].date);
+  card_editlink.push(card[i].editlink);
+  card_addfilelink.push(card[i].addfilelink);
+  card_links[i]=[];
+  card_links_show[i]=[];
+  for (j=0;j<card[i].links.length;j++){
+    var count=0;
+    for (k=0;k<card[i].links[j].length;k++){
+      if (card[i].links[j].charAt(k)=='/') {count =k;}
+    }
+    card_links_show[i].push(card[i].links[j].substring(count+1, card[i].links[j].length));
+    card_links[i].push(card[i].links[j]);
+  }
+};
+//End of Initialization//
+
+$('body').ready(function(){
+  for (i=0;i<card_number;i++)
+  {
+    var temp_cardname = 'log'+i;
+    $('.cards-after-me').append(' <div class="container-log '+ temp_cardname +'"><div class="log-title"><p><b><i>Log #'+(i+1)+'</i></b> -'+ card_title[i]+'</p></div><hr><div class="log-date">'+card_date[i]+'</div><div class="log-tagline"><i>'+card_tagline[i]+'</i></div><p class="log-separator">&#9670</p><div class="log-description"><p>'+card_description[i] +'</p></div><p class="log-separator">&#9671</p><div class="log-links"></div></div>');
+    var temp_cardname_class = '.'+temp_cardname;
+    for(j=0;j<card_links[i].length;j++){
+      $(temp_cardname_class).find('.log-links').append('<p><a href="' + card_links[i][j] + '">'+card_links_show[i][j]+'</a></p>');
+    }
+  }
+});
+</script>
+<!-- End of Insert Card Script -->
+
+</body>
+
+</html>

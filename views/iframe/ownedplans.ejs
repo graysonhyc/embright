@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Courses</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Plugin CSS -->
+
+    <!-- Theme CSS -->
+    <link href="../css/creative.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+body{
+  background-color:#fff;
+}
+hr {
+  border-color: #5970b3;
+  border-width: 2px;
+  max-width: 800px;
+}
+.card {
+  box-shadow: 1px 1px 5px #888888;
+  width:280px;
+}
+.card a {
+  color:#fff;
+}
+.cards-container{
+  padding-left:10px;
+  padding-right:0px;
+  padding-top:10px;
+}
+.card-text {
+  font-size:12px;
+}
+.card-block{
+  overflow:hidden;
+}
+.container-topic{
+  padding-top:20px;
+}
+.save-title{
+  background-color: #aebc21;
+  padding:10px 10px;
+  border-radius:20px;
+  box-shadow: 1px 1px 5px #888888;
+
+}
+.save-title > h3,
+.save-title>p {
+  text-align:center;
+  color:#fff;
+}
+.save-title >h3{
+  font-size:30px;
+  font-weight:bold;s
+}
+.save-title > p{
+  font-weight:100;
+}
+.save-statistics {
+  padding-left: 30px;
+  padding-right:30px;
+}
+@media (max-width: 992px) {
+.save-statistics{
+  padding-top:10px;
+}
+}
+.box{
+  padding-top:15px;
+  padding-bottom:15px;
+  background-color:#fff;
+  border-radius:20px;
+  box-shadow: 1px 1px 5px #888888;
+
+}
+.plan-number > *, 
+.learning-progress > *{
+  text-align: center;
+}
+.plan-number>p,
+.learning-progress>p{
+}
+.plan-number>h2,
+.learning-progress>h2{
+  font-weight:100;
+  font-size:30px;
+}
+.container-10{
+  width:9%;
+  display:inline-block;
+}
+.container-20{
+  width:19%;
+  display:inline-block;
+}
+.container-30{
+  width:29%;
+  display:inline-block;
+}
+.container-40{
+  width:39%;
+  display:inline-block;
+}
+.container-50{
+  width:49%;
+  display:inline-block;
+}
+.container-60{
+  width:59%;
+  display:inline-block;
+}
+.container-title{
+  padding:5px 0 5px 0;
+}
+.container-title p a{
+  color:#4b4b4b;
+  font-size:25px;
+  display:inline;
+  padding:10px 20px 10px 20px;
+  background-color:#f3f3f3;
+  border-radius:10px;
+  transition-duration:0.5s;
+  text-decoration: none;
+}
+.container-title p {
+  display:inline;
+}
+
+.container-title p a:hover{
+  border-radius:30px;
+  background-color:#626262;
+  color:#fff;
+  border:5px solid #68c5ee;
+}
+.button-so{
+  text-align: center;
+}
+.container-personal{
+  padding:40px 20px 5px 50px;
+}
+.container-personal .user-name{
+  text-align:left;
+  text-transform: uppercase;
+  display:inline;
+  font-size:40px;
+  font-weight: bold;
+  border-bottom:4px solid #f35467;
+}
+.saved, .owned{
+  padding:0 10px 0 10px;
+}
+</style>
+</head>
+<%    
+function objectLength(obj) {
+      var result = 0;
+      for(var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+        // or Object.prototype.hasOwnProperty.call(obj, prop)
+          result++;
+        }
+      }
+      return result;
+} 
+var recordnum = objectLength(plans); 
+%>
+
+<body>
+<!-- Page Heading -->
+<div class="container-personal">
+  <div class="container-30">
+      <p class="user-name"><%=localuser[0].DisplayName%></p>
+
+  </div>
+  <div class="container-30">
+  </div>
+  <div class="container-40">
+  </div>
+</div>
+
+<div class="container-title">
+  <div class="container-20"></div>
+  <div class="container-60 button-so">
+    <p class="savedplans"><a href="/iframe/savedplans">Saved</a></p> 
+    <p class="ownedplans"><a href="/iframe/ownedplans">Owned</a></p>
+  </div>
+  <div class="container-20">
+  </div>
+</div>
+<div class="cards-container"></div>
+  <!-- jQuery -->
+<script src="../js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+<script>
+function Course(name, type, description, img, id) {
+  this.name=name;
+  this.type=type;
+  this.description=description;
+  this.img=img;
+  this.id=id;
+} 
+var courses= [];
+
+<% for (var prop in plans) { %>
+    courses.push(new Course('<%= plans[prop].PlanTitle %>', '<%= plans[prop].PlanTopic %>', '<%= plans[prop].PlanDetails %>','<%= plans[prop].PlanPicture%>',<%=plans[prop].PlanID%>));
+<% } %>
+
+console.log("run");
+$("body").ready(function(){
+  for (i=0;i<courses.length;i++)
+  {
+  $(".cards-container").append('<div class="card" style="float:left;"><div class="card-img-top" style="position:relative"><img class="" src="'+ courses[i].img +'" alt="Card image cap" width="100%" height="200px"><div class="card-title"><h4><a href="/iframe/resources_show?ID=' +courses[i].id+ '">' + courses[i].name + '</a></h4><h5>' + courses[i].type + '</h5></div><div class="card-button-group" style="position:absolute; right:-px; bottom: -10px;"><div><a href="#none"><img class="card-button" src="../img/like.png"></a></div><div><a href="" ><img class="card-button" src="../img/add.png"></a></div><div><a href=""><img class="card-button" src="../img/check.png"></a></div></div></div><div class="card-block" style="height:100px"><p class="card-text">' + courses[i].description + '</p></div></div>');
+  }
+});
+</script>
+</body>
+
+</html>

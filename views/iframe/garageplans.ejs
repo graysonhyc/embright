@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Courses</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Plugin CSS -->
+
+    <!-- Theme CSS -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+body{
+  background-color:#fff;
+}
+hr {
+  border-color: #5970b3;
+  border-width: 2px;
+  max-width: 800px;
+}
+.card {
+  box-shadow: 1px 1px 5px #888888;
+  width:300px;
+}
+.card a {
+  color:#fff;
+}
+.cards-container{
+  padding-left:30px;
+  padding-right:0px;
+  padding-top:10px;
+}
+.card-text {
+  font-size:12px;
+}
+.card-block{
+  overflow:hidden;
+}
+.topic-box{
+  padding:30px 20px 20px 40px;
+}
+.topic-box h3{
+  font-size:30px;
+  color:#313131;
+  font-weight:bold;
+  display:inline-block;
+  border-bottom:4px solid #f74356;
+  margin-top:3px;
+}
+.topic-box p{
+  font-size:15px;
+}
+.topic-box p a{
+  color:#68c5ee;
+  text-decoration: none;
+}
+.topic-box p a:hover{
+  font-weight:bolder;
+}
+</style>
+</head>
+
+<body>
+<div class="topic-name">
+  <div class="topic-box">
+  <p><span style="display:inline-block;width:4px;margin-left:-20px"></span><a href="/show_directory" target="_top">&#9666 RETURN</a></p>
+    <!-- DATA - Substitute the name of the category -->
+    <h3>Garage</h3>
+
+</div>
+<% if (locals.err) { %>
+    <h5><font color = "red"><%= err %></font></h5>
+<% } %>
+<div class="cards-container"></div>
+  <!-- jQuery -->
+<script src="../js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+<script>
+function Course(name, type, description,img,id){
+  this.name=name;
+  this.type=type;
+  this.description=description;
+  this.img=img;
+  this.id=id;
+} 
+var courses= [];
+
+
+<% for (var prop in plans) { %>
+    courses.push(new Course('<%= plans[prop].PlanTitle %>', '<%= plans[prop].PlanTopic %>', '<%= plans[prop].PlanDetails %>','<%= plans[prop].PlanPicture%>',<%=plans[prop].PlanID%>));
+<% } %>
+
+// courses.push(new Course('Quantum Mechanics', 'Tutorial', 'Quantum physics can be intimidating, but if you keep these six key concepts in mind, you should be able to improve your understanding of it.','quantum.jpg'));
+// courses.push(new Course('JavaScript', 'Programming', 'JavaScript is the programming language of HTML and the Web. JavaScript is easy to learn. This tutorial will teach you JavaScript from basic to advanced.','javascript.jpg'));
+// courses.push(new Course('Basic Statistics', 'Exercise', 'Statistics is a branch of mathematics dealing with the collection, analysis, interpretation, presentation, and organization of data.','Statistics.jpg'));
+// courses.push(new Course('Embright', 'Tutorial', 'It is the greatest Self-Learning platform on the Internet','education.jpg'));
+
+// courses.push(new Course('AngularJS', 'Self-Learning', 'AngularJS is a JavaScript framework. It can be added to an HTML page with a script tag.AngularJS extends HTML attributes with Directives, and binds data to HTML with Expressions.','angularjs.jpg'));
+// courses.push(new Course('SQL', 'Programming', 'SQL is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS)','SQL.jpg'));
+
+
+$("body").ready(function(){
+  for (i=0;i<courses.length;i++)
+  {
+  $(".cards-container").append('<div class="card" style="float:left;"><div class="card-img-top" style="position:relative"><img class="" src="'+ courses[i].img +'" alt="Card image cap" width="100%" height="200px"><div class="card-title"><h4><a href="">' + courses[i].name + '</a></h4><h5>' + courses[i].type + '</h5></div><div class="card-button-group" style="position:absolute; right:-px; bottom: -10px;"><div><a href="#none"><img class="card-button" src="../img/like.png"></a></div><div><a href="/enrollplanhandle?ID=' +courses[i].id+ '" target="_top"><img class="card-button" src="../img/add.png"></a></div><div><a href=""><img class="card-button" src="../img/check.png"></a></div></div></div><div class="card-block" style="height:100px"><p class="card-text">' + courses[i].description + '</p></div></div>');
+  }
+});
+
+
+</script>
+</body>
+
+</html>
